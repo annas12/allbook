@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Ringkasan buku bestseller dalam bahasa Indonesia. Temukan ide utama, insight penting, dan langkah praktis dalam beberapa menit." />
+  <title>AllBook — Ringkasan Buku Bestseller</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f7fb;--card:#fff;--ink:#111827;--muted:#64748b;--line:#e6e9f0;
+      --navy:#0b1020;--purple:#6d5dfc;--purple2:#8b5cf6;--lime:#d7ff65;
+      --radius:22px;--shadow:0 18px 50px rgba(15,23,42,.08);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif}
+    button,input{font:inherit} button{cursor:pointer}
+    .wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+    header{position:sticky;top:0;z-index:50;background:rgba(246,247,251,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(230,233,240,.8)}
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:11px;font-family:Manrope;font-weight:800;font-size:20px}
+    .logo{width:38px;height:38px;border-radius:12px;background:var(--navy);display:grid;place-items:center;color:var(--lime);font-size:19px;box-shadow:0 8px 20px rgba(11,16,32,.18)}
+    .navlinks{display:flex;gap:26px;color:#475569;font-weight:600;font-size:14px}
+    .navlinks a{color:inherit;text-decoration:none}.navlinks a:hover{color:var(--purple)}
+    .pill{border:1px solid var(--line);background:white;border-radius:999px;padding:10px 14px;font-weight:700;color:#334155}
+    .hero{padding:54px 0 34px}
+    .hero-card{min-height:420px;border-radius:32px;background:
+      radial-gradient(circle at 85% 20%,rgba(139,92,246,.34),transparent 30%),
+      radial-gradient(circle at 60% 80%,rgba(215,255,101,.12),transparent 22%),
+      var(--navy);color:white;display:grid;grid-template-columns:1.2fr .8fr;overflow:hidden;position:relative;padding:54px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+    .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    h1{font-family:Manrope;margin:15px 0 18px;font-size:clamp(38px,5vw,68px);line-height:1.02;letter-spacing:-.04em;max-width:700px}
+    .hero p{font-size:17px;line-height:1.7;color:#cbd5e1;max-width:620px;margin:0 0 28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .primary{border:none;background:var(--lime);color:#111827;padding:14px 20px;border-radius:14px;font-weight:800}
+    .secondary{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:white;padding:14px 20px;border-radius:14px;font-weight:700}
+    .hero-books{position:relative;min-height:300px}
+    .hero-book{position:absolute;width:150px;aspect-ratio:2/3;object-fit:cover;border-radius:12px;box-shadow:0 25px 45px rgba(0,0,0,.38);border:3px solid rgba(255,255,255,.14)}
+    .hero-book:nth-child(1){right:145px;top:45px;transform:rotate(-9deg)}
+    .hero-book:nth-child(2){right:35px;top:5px;transform:rotate(7deg)}
+    .hero-book:nth-child(3){right:62px;top:155px;transform:rotate(13deg);width:125px}
+    .section{padding:34px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:20px}
+    .section h2{font-family:Manrope;font-size:30px;letter-spacing:-.03em;margin:0 0 6px}
+    .section-sub{color:var(--muted);font-size:15px}
+    .search-row{display:grid;grid-template-columns:1fr auto;gap:14px;margin:12px 0 22px}
+    .search{position:relative}.search input{width:100%;border:1px solid var(--line);border-radius:16px;background:white;padding:15px 16px 15px 45px;outline:none;box-shadow:0 6px 20px rgba(15,23,42,.03)}
+    .search input:focus{border-color:#b8adff;box-shadow:0 0 0 4px rgba(109,93,252,.10)}
+    .search:before{content:"⌕";position:absolute;left:17px;top:9px;font-size:25px;color:#94a3b8}
+    .chips{display:flex;gap:9px;overflow:auto;padding-bottom:4px;scrollbar-width:none;margin-bottom:26px}
+    .chip{border:1px solid var(--line);background:white;color:#475569;border-radius:999px;padding:10px 15px;font-weight:700;white-space:nowrap}
+    .chip.active{background:var(--navy);color:white;border-color:var(--navy)}
+    .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+    .book{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.25s;position:relative}
+    .book:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#d6d9e3}
+    .cover{aspect-ratio:2/3;background:#e2e8f0;overflow:hidden;position:relative}
+    .cover img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .35s}
+    .book:hover .cover img{transform:scale(1.035)}
+    .badge{position:absolute;top:11px;left:11px;background:rgba(11,16,32,.88);color:white;padding:6px 9px;border-radius:999px;font-size:10px;font-weight:800;backdrop-filter:blur(6px)}
+    .book-body{padding:15px}
+    .meta{font-size:11px;color:var(--purple);font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+    .book h3{font-family:Manrope;font-size:15px;line-height:1.35;margin:0 0 5px}
+    .author{font-size:12px;color:var(--muted);margin-bottom:13px}
+    .book-foot{display:flex;justify-content:space-between;align-items:center;color:#64748b;font-size:11px;border-top:1px solid #eef1f5;padding-top:11px}
+    .read{border:none;background:transparent;color:#4f46e5;font-weight:800;padding:0}
+    .empty{display:none;text-align:center;padding:70px 20px;background:white;border-radius:24px;border:1px dashed #cbd5e1;color:#64748b}
+    .feature-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .feature{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;gap:13px;align-items:flex-start}
+    .feature-icon{width:42px;height:42px;border-radius:13px;background:#f0edff;color:#5b4ee4;display:grid;place-items:center;font-size:20px;flex:none}
+    .feature b{display:block;font-family:Manrope;margin-bottom:4px}.feature span{color:var(--muted);font-size:13px;line-height:1.5}
+    footer{margin-top:50px;background:var(--navy);color:#cbd5e1;padding:40px 0}
+    footer .foot{display:flex;justify-content:space-between;gap:30px;align-items:center}
+    footer strong{color:white;font-family:Manrope}
+    .modal{position:fixed;inset:0;z-index:100;background:rgba(5,8,18,.68);display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(8px)}
+    .modal.open{display:flex}
+    .sheet{width:min(960px,100%);max-height:94vh;overflow:auto;background:#fbfbfd;border-radius:28px 28px 0 0;box-shadow:0 -20px 80px rgba(0,0,0,.24)}
+    .sheet-top{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:rgba(251,251,253,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .close{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:white;font-size:20px}
+    .detail{padding:28px 34px 56px}
+    .detail-head{display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start}
+    .detail-cover{width:190px;aspect-ratio:2/3;object-fit:cover;border-radius:16px;box-shadow:0 20px 45px rgba(15,23,42,.18)}
+    .detail h2{font-family:Manrope;font-size:38px;line-height:1.08;letter-spacing:-.04em;margin:10px 0}
+    .detail-author{color:#64748b;font-size:16px;margin-bottom:18px}
+    .quick{display:flex;gap:9px;flex-wrap:wrap}.quick span{background:#eef2ff;color:#4f46e5;font-weight:700;border-radius:999px;padding:8px 11px;font-size:12px}
+    .lead{font-size:18px;line-height:1.8;color:#334155;margin:30px 0}
+    .content-box{background:white;border:1px solid var(--line);border-radius:20px;padding:22px;margin:14px 0}
+    .content-box h4{font-family:Manrope;font-size:18px;margin:0 0 12px}.content-box p{color:#475569;line-height:1.75;margin:0}
+    .ideas{display:grid;gap:11px}.idea{display:grid;grid-template-columns:34px 1fr;gap:11px;align-items:start}.idea-num{width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:12px}.idea p{margin:3px 0;color:#475569;line-height:1.65}
+    .actions{margin:0;padding-left:20px;color:#475569}.actions li{margin:8px 0;line-height:1.6}
+    @media(max-width:980px){.grid{grid-template-columns:repeat(4,1fr)}.hero-card{padding:38px}.hero-books{transform:scale(.85);transform-origin:center}}
+    @media(max-width:760px){.wrap{width:min(100% - 22px,1180px)}.navlinks{display:none}.hero{padding-top:24px}.hero-card{grid-template-columns:1fr;padding:30px 24px 26px;min-height:auto}.hero-books{height:255px;margin-top:10px}.hero-book{width:125px}.hero-book:nth-child(1){right:48%;top:32px}.hero-book:nth-child(2){right:15%;top:8px}.hero-book:nth-child(3){right:25%;top:120px;width:105px}.grid{grid-template-columns:repeat(3,1fr)}.feature-strip{grid-template-columns:1fr}.detail-head{grid-template-columns:120px 1fr;gap:18px}.detail-cover{width:120px}.detail h2{font-size:28px}.detail{padding:22px 18px 44px}.search-row{grid-template-columns:1fr}}
+    @media(max-width:520px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.book-body{padding:12px}.section h2{font-size:25px}.hero-card{border-radius:24px}h1{font-size:41px}.section-head{align-items:start}.detail-head{grid-template-columns:90px 1fr}.detail-cover{width:90px}.detail h2{font-size:23px}.lead{font-size:16px}.sheet{border-radius:22px 22px 0 0}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><div class="logo">A</div>AllBook</div>
+    <nav class="navlinks"><a href="#koleksi">Koleksi</a><a href="#unggulan">Kenapa AllBook</a><a href="#tentang">Tentang</a></nav>
+    <button class="pill" onclick="document.querySelector('#searchInput').focus();location.hash='koleksi'">Cari buku</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-card">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Buku besar. Waktu baca kecil.</div>
+        <h1>Ambil inti buku terbaik dalam hitungan menit.</h1>
+        <p>Ringkasan bestseller yang langsung menuju gagasan utama, konteks penting, dan langkah praktis. Cocok untuk menemukan buku berikutnya atau mengingat kembali pelajaran yang pernah dibaca.</p>
+        <div class="hero-actions">
+          <button class="primary" onclick="location.hash='koleksi'">Jelajahi ringkasan ↓</button>
+          <button class="secondary" onclick="openBook('deep-work')">Mulai dari Deep Work</button>
+        </div>
+      </div>
+      <div class="hero-books" aria-hidden="true">
+        <img class="hero-book" src="https://raw.githubusercontent.com/annas12/lp1/main/image/deepwork.jpeg" alt="">
+        <img class="hero-book" src="https://raw.githubusercontent.com/annas12/lp1/main/image/richdadpoordad.jpeg" alt="">
+        <img class="hero-book" src="https://raw.githubusercontent.com/annas12/lp1/main/image/theleanstartup.jpeg" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="unggulan">
+    <div class="wrap feature-strip">
+      <div class="feature"><div class="feature-icon">✦</div><div><b>Inti, bukan basa-basi</b><span>Fokus pada gagasan yang benar-benar membentuk isi buku.</span></div></div>
+      <div class="feature"><div class="feature-icon">◷</div><div><b>5–8 menit per buku</b><span>Cukup singkat untuk dibaca saat jeda, cukup padat untuk berguna.</span></div></div>
+      <div class="feature"><div class="feature-icon">✓</div><div><b>Selalu ada tindakan</b><span>Setiap ringkasan ditutup dengan langkah yang bisa langsung dicoba.</span></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="koleksi">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Pilih buku yang ingin kamu kuasai</h2><div class="section-sub"><span id="count"></span> ringkasan pilihan, disusun agar nyaman dibaca di HP maupun desktop.</div></div>
+      </div>
+      <div class="search-row">
+        <div class="search"><input id="searchInput" autocomplete="off" placeholder="Cari judul, penulis, atau topik..." oninput="renderBooks()"></div>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="grid" id="bookGrid"></div>
+      <div class="empty" id="empty">Tidak ada buku yang cocok. Coba kata kunci atau kategori lain.</div>
+    </div>
+  </section>
+</main>
+
+<footer id="tentang"><div class="wrap foot"><div><strong>AllBook</strong><div style="margin-top:6px;font-size:13px">Ringkasan untuk memahami ide, bukan pengganti membaca buku aslinya.</div></div><div style="font-size:13px">Dibuat untuk pembaca yang ingin belajar lebih cepat.</div></div></footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="sheet">
+    <div class="sheet-top"><div style="font-weight:800">Ringkasan Buku</div><button class="close" onclick="closeModal()" aria-label="Tutup">×</button></div>
+    <div class="detail" id="detail"></div>
+  </div>
+</div>
+
+<script>
+const BASE='https://raw.githubusercontent.com/annas12/lp1/main/image/';
+const books=[
+{id:'deep-work',title:'Deep Work',author:'Cal Newport',img:'deepwork.jpeg',cat:'Produktivitas',time:6,badge:'Pilihan Editor',hook:'Kerja fokus tanpa gangguan adalah kemampuan langka yang membuat hasil kerja jauh lebih bernilai.',overview:'Cal Newport membedakan deep work, yaitu kerja dengan konsentrasi penuh pada tugas bernilai tinggi, dari shallow work yang penuh notifikasi, rapat, dan aktivitas administratif. Pesan utamanya sederhana: kemampuan untuk fokus lama bukan sekadar kebiasaan kerja, tetapi keunggulan kompetitif yang bisa dilatih.',ideas:['Fokus adalah keterampilan yang menguat jika dilatih dan melemah jika terus-menerus dipecah oleh gangguan.','Jadwalkan blok kerja mendalam, jangan menunggu suasana hati atau waktu kosong muncul sendiri.','Kebosanan perlu ditoleransi. Jika setiap jeda langsung diisi ponsel, otak belajar selalu mencari stimulasi.','Nilai hasil kerja sering ditentukan oleh seberapa lama kita bisa berkonsentrasi pada masalah sulit tanpa berpindah konteks.'],actions:['Tetapkan 60–90 menit tanpa notifikasi untuk satu tugas penting.','Tentukan jam khusus untuk mengecek email dan chat.','Tutup hari kerja dengan ritual singkat: cek tugas, rencanakan besok, lalu benar-benar selesai.']},
+{id:'rich-dad-poor-dad',title:'Rich Dad Poor Dad',author:'Robert T. Kiyosaki',img:'richdadpoordad.jpeg',cat:'Keuangan',time:6,badge:'Populer',hook:'Cara melihat uang berubah ketika fokus bergeser dari “berapa gaji saya?” menjadi “aset apa yang saya bangun?”.',overview:'Buku ini memakai kontras dua pola pikir tentang uang: bekerja untuk pendapatan versus membangun aset yang dapat menghasilkan arus kas. Terlepas dari perdebatan atas beberapa contoh dan nasihat investasinya, gagasan yang membuat buku ini populer adalah pentingnya literasi finansial dan memahami perbedaan antara aset, kewajiban, pendapatan, serta pengeluaran.',ideas:['Pendapatan tinggi tidak otomatis menghasilkan kekayaan jika pengeluaran dan kewajiban ikut naik.','Literasi finansial berarti memahami ke mana uang bergerak, bukan hanya mengetahui berapa yang masuk.','Aset produktif dapat membantu mengurangi ketergantungan pada satu sumber penghasilan.','Belajar menjual, bernegosiasi, dan memahami bisnis dipandang sebagai keterampilan finansial penting.'],actions:['Buat laporan arus kas pribadi sederhana selama 30 hari.','Pisahkan pembelian yang menghasilkan uang dari pembelian yang hanya menambah biaya.','Pelajari satu jenis aset secara mendalam sebelum menaruh uang di dalamnya.']},
+{id:'think-grow-rich',title:'Think and Grow Rich',author:'Napoleon Hill',img:'thinkgrowrich.jpeg',cat:'Pengembangan Diri',time:7,badge:'Klasik',hook:'Tujuan yang jelas, keyakinan, dan tindakan konsisten menjadi mesin utama pencapaian.',overview:'Napoleon Hill merangkum pola pikir dan kebiasaan yang ia kaitkan dengan pencapaian besar. Banyak bagian menggunakan bahasa era awal abad ke-20, tetapi ide yang tetap relevan adalah pentingnya tujuan spesifik, rencana yang terus diperbaiki, ketekunan, jaringan orang yang saling menguatkan, dan kemampuan menjaga perhatian pada sasaran.',ideas:['Keinginan yang kabur menghasilkan tindakan yang kabur; tujuan perlu dibuat spesifik.','Rencana pertama tidak harus sempurna. Kegagalan awal adalah informasi untuk memperbaiki strategi.','Lingkungan sosial memengaruhi standar, keyakinan, dan keputusan.','Ketekunan sering menjadi pembeda setelah antusiasme awal hilang.'],actions:['Tulis satu target utama beserta angka dan tenggatnya.','Tentukan tiga tindakan mingguan yang terhubung langsung ke target itu.','Bangun kelompok kecil untuk saling menguji ide dan menjaga akuntabilitas.']},
+{id:'lean-startup',title:'The Lean Startup',author:'Eric Ries',img:'theleanstartup.jpeg',cat:'Bisnis',time:7,badge:'Founder Pick',hook:'Jangan habiskan berbulan-bulan membangun sesuatu yang belum terbukti dibutuhkan pelanggan.',overview:'Eric Ries menawarkan pendekatan membangun bisnis melalui eksperimen cepat. Alih-alih menganggap rencana awal pasti benar, tim membangun versi minimum yang cukup untuk menguji asumsi, mengukur perilaku nyata pengguna, lalu memutuskan apakah perlu mempertahankan arah atau melakukan perubahan besar.',ideas:['Unit kemajuan startup bukan banyaknya fitur, tetapi pembelajaran tervalidasi.','MVP bukan produk jelek; ia adalah eksperimen terkecil yang bisa menguji asumsi penting.','Metrik harus membantu keputusan, bukan sekadar terlihat mengesankan.','Pivot berarti mengubah hipotesis strategis sambil mempertahankan pembelajaran yang sudah diperoleh.'],actions:['Tulis tiga asumsi paling berisiko dari ide bisnismu.','Pilih eksperimen termurah untuk menguji satu asumsi dalam seminggu.','Tentukan metrik keputusan sebelum eksperimen dimulai.']},
+{id:'outliers',title:'Outliers',author:'Malcolm Gladwell',img:'outliers.jpeg',cat:'Psikologi',time:6,badge:'Bestseller',hook:'Kesuksesan tidak lahir di ruang hampa; kesempatan, budaya, waktu, dan latihan ikut membentuk hasil.',overview:'Gladwell menantang kisah sukses yang hanya menyoroti bakat individu. Ia menunjukkan bagaimana tanggal lahir, akses ke latihan, latar budaya, jaringan, dan momentum sejarah dapat memperbesar atau memperkecil peluang seseorang. Buku ini membuat pembaca melihat prestasi sebagai gabungan kemampuan pribadi dan konteks.',ideas:['Keuntungan kecil di awal dapat menumpuk menjadi kesenjangan besar melalui efek kumulatif.','Latihan berkualitas membutuhkan akses, waktu, dukungan, dan kesempatan.','Budaya membawa pola komunikasi dan kebiasaan yang dapat memengaruhi performa.','Cerita sukses lebih lengkap ketika kita menanyakan kesempatan apa yang tersedia, bukan hanya seberapa keras seseorang bekerja.'],actions:['Petakan keuntungan struktural yang sudah kamu miliki dan cara memaksimalkannya.','Cari lingkungan yang memberi lebih banyak kesempatan berlatih, bukan hanya motivasi.','Saat menilai orang, pisahkan kemampuan dari konteks yang memengaruhi hasil.']},
+{id:'how-win-friends',title:'How to Win Friends & Influence People',author:'Dale Carnegie',img:'howtowinfriendsinfluencepeople.jpeg',cat:'Komunikasi',time:8,badge:'Klasik',hook:'Orang lebih terbuka ketika mereka merasa dihargai, didengar, dan tidak dipermalukan.',overview:'Dale Carnegie membahas komunikasi interpersonal melalui prinsip sederhana: kurangi kritik yang memicu defensif, tunjukkan minat tulus, dengarkan dengan baik, dan bantu orang mempertahankan harga dirinya. Walau beberapa contoh terasa kuno, mekanisme sosial yang dijelaskan masih relevan.',ideas:['Kritik langsung sering membuat orang membela diri sebelum memikirkan isi kritik.','Nama, perhatian, dan pertanyaan tulus memberi sinyal bahwa seseorang dianggap penting.','Persuasi lebih mudah ketika pembicaraan dimulai dari kepentingan lawan bicara.','Mengakui kesalahan sendiri dapat menurunkan tensi dalam percakapan sulit.'],actions:['Dalam percakapan berikutnya, ajukan dua pertanyaan sebelum memberi opini.','Ganti pujian generik dengan apresiasi yang spesifik.','Saat tidak setuju, mulai dari titik yang memang sama-sama disepakati.']},
+{id:'one-thing',title:'The ONE Thing',author:'Gary Keller & Jay Papasan',img:'theonething.jpeg',cat:'Produktivitas',time:5,badge:'Praktis',hook:'Lebih sedikit, tetapi tepat, sering mengalahkan daftar tugas yang panjang.',overview:'Buku ini mendorong pembaca mencari satu tindakan yang paling besar pengaruhnya terhadap tujuan. Dengan pertanyaan fokus, time blocking, dan keberanian mengatakan tidak pada pekerjaan bernilai rendah, energi diarahkan ke pekerjaan yang menciptakan efek domino.',ideas:['Tidak semua tugas memiliki nilai yang sama.','Pertanyaan fokus membantu menemukan tindakan yang membuat hal lain menjadi lebih mudah atau tidak perlu.','Multitasking pada pekerjaan kognitif biasanya hanyalah perpindahan konteks yang mahal.','Prioritas memerlukan perlindungan waktu, bukan sekadar niat.'],actions:['Pilih satu hasil terpenting minggu ini.','Blok waktu tetap setiap hari untuk mengerjakannya sebelum tugas reaktif.','Hapus atau delegasikan satu aktivitas bernilai rendah.']},
+{id:'48-laws',title:'The 48 Laws of Power',author:'Robert Greene',img:'the48lawsofpower.jpeg',cat:'Strategi',time:8,badge:'Sering Dicari',hook:'Sebuah katalog pola kekuasaan, berguna untuk mengenali permainan sosial sekaligus memahami risikonya.',overview:'Robert Greene menyusun puluhan pola dari sejarah politik, perang, kerajaan, dan organisasi. Buku ini lebih bermanfaat jika dibaca sebagai peta pola kekuasaan daripada buku aturan moral. Beberapa “hukum” saling bertentangan karena strategi yang efektif bergantung pada konteks.',ideas:['Persepsi memengaruhi kekuasaan hampir sama kuatnya dengan kemampuan nyata.','Membaca motif, insentif, dan posisi orang lain membantu memahami dinamika sosial.','Strategi yang efektif berubah mengikuti konteks; tidak ada satu taktik yang selalu benar.','Upaya mengejar kekuasaan tanpa batas dapat menciptakan musuh dan biaya jangka panjang.'],actions:['Dalam konflik, petakan kepentingan tiap pihak sebelum bereaksi.','Pisahkan fakta dari citra atau framing yang sengaja dibangun.','Nilai konsekuensi jangka panjang sebelum memakai taktik yang mungkin merusak kepercayaan.']},
+{id:'eat-that-frog',title:'Eat That Frog!',author:'Brian Tracy',img:'eatthatfrog.jpeg',cat:'Produktivitas',time:5,badge:'Cepat Dibaca',hook:'Kerjakan tugas paling penting lebih dulu sebelum hari dipenuhi hal kecil.',overview:'“Katak” adalah metafora untuk tugas penting yang paling mudah ditunda. Brian Tracy menggabungkan prioritas, perencanaan harian, pemecahan tugas, dan disiplin memulai agar pekerjaan bernilai tinggi selesai sebelum energi habis untuk hal-hal kecil.',ideas:['Prioritas perlu dipilih sebelum hari dimulai.','Tugas besar terasa lebih ringan ketika dipecah menjadi langkah konkret.','Kemajuan menciptakan motivasi, bukan selalu sebaliknya.','Aktivitas yang terlihat sibuk belum tentu menghasilkan dampak.'],actions:['Malam ini tulis tiga prioritas untuk besok.','Tandai satu yang paling berdampak dan kerjakan sebelum membuka media sosial.','Pecah tugas yang ditunda menjadi langkah pertama berdurasi 15 menit.']},
+{id:'good-to-great',title:'Good to Great',author:'Jim Collins',img:'goodthegreat.jpeg',cat:'Bisnis',time:7,badge:'Manajemen',hook:'Transformasi hebat biasanya bukan satu ledakan besar, tetapi akumulasi keputusan disiplin.',overview:'Jim Collins dan timnya membandingkan perusahaan yang melonjak dari performa biasa menjadi kuat dalam jangka panjang dengan kelompok pembanding. Konsep terkenalnya meliputi pemimpin Level 5, orang yang tepat, menghadapi fakta brutal, Hedgehog Concept, budaya disiplin, dan flywheel.',ideas:['Kualitas orang dan disiplin organisasi mendahului strategi besar.','Pemimpin efektif dapat menggabungkan ambisi institusional dengan kerendahan hati pribadi.','Fokus strategis menjadi kuat ketika perusahaan tahu apa yang bisa dilakukan terbaik, apa mesin ekonominya, dan apa yang benar-benar dipedulikan.','Momentum tumbuh dari banyak dorongan konsisten pada arah yang sama.'],actions:['Tentukan satu aktivitas yang harus dihentikan karena tidak cocok dengan fokus inti.','Tinjau apakah orang kunci berada di peran yang tepat.','Buat metrik sederhana untuk melihat apakah flywheel benar-benar bergerak.']},
+{id:'influence',title:'Influence',author:'Robert B. Cialdini',img:'Influence.jpeg',cat:'Psikologi',time:8,badge:'Psikologi',hook:'Keputusan sering dipercepat oleh pola sosial sederhana: timbal balik, konsistensi, bukti sosial, otoritas, kesukaan, kelangkaan.',overview:'Cialdini menjelaskan prinsip persuasi yang sering bekerja sebagai jalan pintas mental. Prinsip ini berguna untuk komunikasi dan pemasaran, tetapi sama pentingnya untuk pertahanan diri agar kita tidak mengambil keputusan hanya karena pemicu psikologis.',ideas:['Timbal balik membuat orang terdorong membalas pemberian atau konsesi.','Bukti sosial menjadi lebih kuat ketika situasi ambigu dan orang lain terasa mirip dengan kita.','Kelangkaan dapat meningkatkan persepsi nilai tanpa mengubah kualitas objektif.','Otoritas dan simbol otoritas dapat memengaruhi keputusan bahkan ketika relevansinya lemah.'],actions:['Saat merasa terburu-buru membeli, tanyakan apakah nilai produk berubah atau hanya terasa langka.','Dalam komunikasi persuasif, gunakan bukti yang relevan dan jujur, bukan tekanan palsu.','Pisahkan kredensial seseorang dari kualitas argumennya.']},
+{id:'purple-cow',title:'Purple Cow',author:'Seth Godin',img:'Purple-Cow.jpeg',cat:'Marketing',time:5,badge:'Marketing',hook:'Di pasar yang penuh pilihan, produk yang “cukup bagus” mudah menjadi tidak terlihat.',overview:'Seth Godin berargumen bahwa pemasaran tidak bisa hanya ditambahkan di akhir sebagai iklan. Produk itu sendiri perlu cukup berbeda untuk layak dibicarakan. Ia menyebutnya remarkable, sesuatu yang membuat kelompok pelanggan tertentu dengan sukarela menyebarkan cerita.',ideas:['Aman dan rata-rata bisa menjadi strategi paling berisiko di pasar ramai.','Produk remarkable tidak harus disukai semua orang; ia harus sangat relevan bagi kelompok tertentu.','Inovasi pemasaran sebaiknya masuk ke desain produk sejak awal.','Early adopters dapat membantu pesan menyebar jika produknya memberi alasan untuk bercerita.'],actions:['Tulis satu alasan konkret mengapa pelanggan akan menceritakan produkmu ke temannya.','Pilih segmen yang paling mungkin menghargai perbedaan itu.','Hapus satu fitur generik dan perkuat satu hal yang benar-benar khas.']},
+{id:'four-hour-workweek',title:'The 4-Hour Workweek',author:'Tim Ferriss',img:'the4hurworkweek.jpeg',cat:'Produktivitas',time:7,badge:'Lifestyle',hook:'Pertanyaan besarnya bukan “bagaimana bekerja lebih keras?”, tetapi “pekerjaan apa yang sebenarnya tidak perlu dilakukan?”.',overview:'Tim Ferriss menggabungkan eliminasi pekerjaan bernilai rendah, otomatisasi, delegasi, dan desain gaya hidup. Tidak semua taktik cocok untuk setiap pekerjaan, tetapi buku ini efektif memaksa pembaca mempertanyakan asumsi bahwa produktivitas berarti menambah jam kerja.',ideas:['Efektivitas berbeda dari efisiensi: melakukan hal yang tidak penting dengan cepat tetap tidak penting.','Batas waktu dan keterbatasan dapat memaksa pemilihan prioritas.','Sistem dan delegasi mengurangi ketergantungan bisnis pada satu orang.','Tujuan kerja seharusnya terhubung dengan kehidupan yang ingin dijalani.'],actions:['Audit pekerjaan seminggu dan tandai aktivitas yang bisa dihapus, diotomatisasi, atau didelegasikan.','Batasi konsumsi informasi yang tidak memengaruhi keputusan.','Uji satu proses yang tetap berjalan tanpa campur tanganmu selama sehari.']},
+{id:'grit',title:'Grit',author:'Angela Duckworth',img:'Grit.jpeg',cat:'Pengembangan Diri',time:6,badge:'Riset',hook:'Bakat membantu memulai, tetapi minat yang bertahan dan latihan konsisten menentukan seberapa jauh kemampuan berkembang.',overview:'Angela Duckworth mendefinisikan grit sebagai kombinasi passion dan perseverance untuk tujuan jangka panjang. Buku ini menekankan bahwa bakat saja tidak menjelaskan pencapaian; usaha bekerja dua kali, pertama untuk membangun keterampilan dan kedua untuk mengubah keterampilan menjadi hasil.',ideas:['Minat sering berkembang melalui eksplorasi, bukan ditemukan seketika sebagai panggilan hidup.','Latihan yang efektif membutuhkan target sempit, umpan balik, dan pengulangan.','Tujuan jangka panjang lebih tahan ketika terhubung dengan makna yang lebih besar dari diri sendiri.','Budaya kelompok dapat memperkuat identitas “kami adalah orang yang terus berlatih”.'],actions:['Pilih satu keterampilan inti untuk dilatih konsisten selama 30 hari.','Minta umpan balik spesifik pada bagian yang paling lemah.','Hubungkan tujuan pribadimu dengan manfaat yang lebih luas bagi orang lain.']},
+{id:'leaders-eat-last',title:'Leaders Eat Last',author:'Simon Sinek',img:'Leaders-Eat-Last.jpeg',cat:'Kepemimpinan',time:6,badge:'Leadership',hook:'Tim bekerja lebih berani ketika lingkungan terasa aman untuk berbicara, gagal, dan saling membantu.',overview:'Simon Sinek membahas kepemimpinan melalui konsep “circle of safety”. Pemimpin bukan sekadar orang yang memiliki jabatan, tetapi pihak yang menciptakan kondisi agar anggota tim merasa aman dari ancaman internal dan dapat mengarahkan energi ke tantangan eksternal.',ideas:['Rasa aman meningkatkan kepercayaan dan kolaborasi.','Budaya yang hanya memberi insentif pada angka dapat mendorong perilaku yang merusak hubungan.','Pemimpin membangun kredibilitas ketika mau menanggung biaya untuk melindungi tim.','Kinerja jangka panjang memerlukan keseimbangan antara hasil dan kesehatan sistem sosial.'],actions:['Dalam rapat berikutnya, minta masalah dibahas tanpa mencari kambing hitam.','Berikan penghargaan pada perilaku membantu tim, bukan hanya hasil individu.','Periksa apakah target mendorong kompetisi internal yang tidak sehat.']},
+{id:'psychology-selling',title:'The Psychology of Selling',author:'Brian Tracy',img:'The-Psychology-of-Selling.jpeg',cat:'Marketing',time:6,badge:'Sales',hook:'Penjualan membaik ketika percakapan berpusat pada masalah pelanggan, bukan daftar fitur produk.',overview:'Brian Tracy membahas pola pikir sales, prospek, pertanyaan, presentasi manfaat, penanganan keberatan, dan closing. Banyak idenya bersifat praktis: pahami kebutuhan, bangun kepercayaan, dan tunjukkan nilai dengan bahasa yang dekat dengan hasil yang diinginkan pelanggan.',ideas:['Kepercayaan adalah fondasi sebelum teknik closing.','Pertanyaan yang baik membantu pelanggan menjelaskan masalah dengan kata-katanya sendiri.','Fitur baru berarti ketika diterjemahkan menjadi manfaat yang relevan.','Keberatan sering menunjukkan informasi atau keyakinan yang belum terpenuhi.'],actions:['Buat lima pertanyaan diagnosis sebelum menyusun pitch.','Ubah setiap fitur utama menjadi kalimat “artinya untuk pelanggan…”.','Catat keberatan paling sering dan siapkan jawaban berbasis bukti.']},
+{id:'infinite-game',title:'The Infinite Game',author:'Simon Sinek',img:'The-Infinite-Game.jpeg',cat:'Kepemimpinan',time:6,badge:'Strategi',hook:'Bisnis tidak punya garis finish tetap; tujuan utamanya adalah tetap mampu bermain dan berkembang.',overview:'Sinek membedakan finite game yang punya aturan, pemain, dan akhir jelas dengan infinite game yang terus berubah. Organisasi yang berpikir jangka panjang perlu memiliki tujuan yang layak diperjuangkan, tim saling percaya, rival yang membantu belajar, fleksibilitas eksistensial, dan keberanian memimpin.',ideas:['Mengalahkan pesaing sesaat tidak sama dengan membangun organisasi yang tahan lama.','Rival dapat menjadi cermin untuk menunjukkan area di mana kita perlu berkembang.','Tujuan yang kuat memberi alasan bertahan saat insentif jangka pendek berubah.','Fleksibilitas strategis penting ketika lingkungan berubah besar.'],actions:['Tuliskan tujuan organisasi yang tidak bergantung pada satu produk.','Pilih satu rival yang kamu kagumi dan pelajari kekuatan spesifiknya.','Tinjau keputusan besar dengan horizon tiga tahun, bukan hanya satu kuartal.']},
+{id:'magic-thinking',title:'The Magic of Thinking Big',author:'David J. Schwartz',img:'themagicofthinking.jpeg',cat:'Pengembangan Diri',time:6,badge:'Klasik',hook:'Ukuran tindakan sering mengikuti ukuran cara kita mendefinisikan kemungkinan.',overview:'David Schwartz mendorong pembaca mengembangkan cara berpikir yang lebih besar melalui kepercayaan diri, tindakan, lingkungan positif, dan standar yang lebih tinggi. Bukan berarti mengabaikan realitas, tetapi menolak membatasi pilihan hanya karena asumsi yang belum diuji.',ideas:['Keyakinan memengaruhi seberapa banyak tindakan yang bersedia kita coba.','Alasan yang terus diulang dapat berubah menjadi identitas yang membatasi.','Lingkungan sosial ikut menentukan standar yang terasa normal.','Tindakan kecil dapat mengurangi ketakutan lebih efektif daripada terus memikirkannya.'],actions:['Ambil satu tujuan dan gandakan skala kemungkinan solusinya sebelum menilai kelayakan.','Ganti satu alasan berulang dengan eksperimen kecil.','Dekati orang atau lingkungan yang memiliki standar lebih tinggi di bidang yang ingin kamu tingkatkan.']},
+{id:'delivering-happiness',title:'Delivering Happiness',author:'Tony Hsieh',img:'deliveringhappines.jpeg',cat:'Bisnis',time:7,badge:'Culture',hook:'Budaya perusahaan bukan dekorasi; ia memengaruhi siapa yang direkrut, bagaimana keputusan dibuat, dan bagaimana pelanggan diperlakukan.',overview:'Tony Hsieh menceritakan perjalanan bisnisnya dan pembangunan budaya Zappos. Inti bukunya adalah gagasan bahwa pengalaman pelanggan, budaya internal, dan tujuan perusahaan dapat saling memperkuat ketika tidak diperlakukan sebagai proyek terpisah.',ideas:['Budaya muncul dari perilaku yang benar-benar diberi penghargaan, bukan slogan dinding.','Pengalaman pelanggan yang kuat bisa menjadi pemasaran dari mulut ke mulut.','Proses rekrutmen memengaruhi budaya dalam jangka panjang.','Kebahagiaan kerja lebih terkait dengan kemajuan, hubungan, dan makna daripada fasilitas semata.'],actions:['Tentukan tiga perilaku budaya yang ingin benar-benar terlihat setiap minggu.','Cari satu momen layanan pelanggan yang bisa dibuat sangat berkesan.','Masukkan pertanyaan budaya ke proses rekrutmen, bukan hanya kompetensi teknis.']},
+{id:'bad-blood',title:'Bad Blood',author:'John Carreyrou',img:'Bad-Blood.jpeg',cat:'Bisnis',time:7,badge:'Kisah Nyata',hook:'Ambisi dan storytelling tidak boleh menggantikan bukti, terutama ketika produk menyentuh kesehatan dan keselamatan.',overview:'John Carreyrou mengisahkan kebangkitan dan kejatuhan Theranos. Selain sebagai cerita investigasi, buku ini menjadi studi tentang tata kelola, due diligence, budaya takut, konflik kepentingan, dan risiko ketika karisma pendiri mendapat ruang lebih besar daripada verifikasi teknis.',ideas:['Narasi yang kuat dapat menutupi pertanyaan teknis jika pengawasan lemah.','Dewan dan investor perlu kompetensi yang relevan untuk menantang klaim.','Budaya takut menghambat informasi buruk sampai masalah menjadi jauh lebih besar.','Whistleblower dan jurnalisme investigatif dapat memainkan peran penting dalam akuntabilitas.'],actions:['Pisahkan bukti produk dari reputasi pendiri saat menilai bisnis.','Untuk klaim kritis, minta verifikasi independen.','Bangun saluran aman agar tim dapat menyampaikan risiko tanpa pembalasan.']},
+{id:'toyota-way',title:'The Toyota Way',author:'Jeffrey K. Liker',img:'Thetoyotaway.jpeg',cat:'Bisnis',time:8,badge:'Operasional',hook:'Perbaikan kecil yang terus berjalan dapat menjadi sistem keunggulan yang sulit ditiru.',overview:'Jeffrey Liker merangkum prinsip manajemen Toyota, dari filosofi jangka panjang sampai continuous improvement dan respect for people. Lean bukan sekadar memangkas biaya, tetapi membangun sistem yang membuat masalah terlihat dan mendorong tim memperbaiki akar penyebab.',ideas:['Proses yang baik membantu menghasilkan hasil yang konsisten.','Masalah sebaiknya dibuat terlihat agar bisa diselesaikan, bukan disembunyikan demi angka.','Standardisasi memberi dasar untuk perbaikan berikutnya.','Pemimpin perlu memahami pekerjaan nyata di lapangan.'],actions:['Pilih satu proses berulang dan tulis standar sederhananya.','Catat jenis pemborosan atau kesalahan yang paling sering muncul.','Lakukan satu eksperimen perbaikan kecil dan ukur dampaknya.']}
+];
+
+let activeCat='Semua';
+const cats=['Semua',...new Set(books.map(b=>b.cat))];
+
+function renderChips(){
+  document.getElementById('chips').innerHTML=cats.map(c=>`<button class="chip ${activeCat===c?'active':''}" onclick="activeCat='${c}';renderChips();renderBooks()">${c}</button>`).join('');
+}
+function renderBooks(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  const filtered=books.filter(b=>(activeCat==='Semua'||b.cat===activeCat)&&(!q||[b.title,b.author,b.cat,b.hook].join(' ').toLowerCase().includes(q)));
+  document.getElementById('count').textContent=books.length;
+  const grid=document.getElementById('bookGrid');
+  const empty=document.getElementById('empty');
+  empty.style.display=filtered.length?'none':'block';
+  grid.style.display=filtered.length?'grid':'none';
+  grid.innerHTML=filtered.map(b=>`
+    <article class="book" onclick="openBook('${b.id}')">
+      <div class="cover"><img loading="lazy" src="${BASE+b.img}" alt="Sampul ${b.title}"><div class="badge">${b.badge}</div></div>
+      <div class="book-body"><div class="meta">${b.cat}</div><h3>${b.title}</h3><div class="author">${b.author}</div>
+      <div class="book-foot"><span>◷ ${b.time} menit</span><button class="read">Baca →</button></div></div>
+    </article>`).join('');
+}
+function openBook(id){
+  const b=books.find(x=>x.id===id); if(!b)return;
+  document.getElementById('detail').innerHTML=`
+    <div class="detail-head">
+      <img class="detail-cover" src="${BASE+b.img}" alt="Sampul ${b.title}">
+      <div><div class="meta">${b.cat}</div><h2>${b.title}</h2><div class="detail-author">${b.author}</div>
+      <div class="quick"><span>◷ ${b.time} menit</span><span>${b.badge}</span><span>Bahasa Indonesia</span></div></div>
+    </div>
+    <div class="lead">${b.hook}</div>
+    <div class="content-box"><h4>Ringkasan singkat</h4><p>${b.overview}</p></div>
+    <div class="content-box"><h4>Ide utama yang perlu diingat</h4><div class="ideas">${b.ideas.map((x,i)=>`<div class="idea"><div class="idea-num">${String(i+1).padStart(2,'0')}</div><p>${x}</p></div>`).join('')}</div></div>
+    <div class="content-box"><h4>Coba praktikkan hari ini</h4><ol class="actions">${b.actions.map(x=>`<li>${x}</li>`).join('')}</ol></div>
+    <div class="content-box"><h4>Catatan pembaca</h4><p>Ringkasan ini dibuat untuk membantu memahami dan mengingat gagasan utama. Untuk konteks, cerita, data, dan nuansa lengkap, baca buku aslinya.</p></div>`;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  history.replaceState(null,'','#'+id);
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+  history.replaceState(null,'',location.pathname+location.search);
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+renderChips();renderBooks();
+const initial=location.hash.slice(1);if(books.some(b=>b.id===initial))openBook(initial);
+</script>
+</body>
+</html>
