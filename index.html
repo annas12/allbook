@@ -100,6 +100,7 @@
     .day-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.day-no{font-size:11px;font-weight:800;color:#6d5dfc;text-transform:uppercase;letter-spacing:.08em}.day-time{font-size:11px;font-weight:700;color:#64748b;background:#f1f5f9;border-radius:999px;padding:6px 9px}
     .day-card h5{font-family:Manrope;font-size:18px;margin:5px 0 8px}.day-focus{font-size:14px;color:#475569;line-height:1.65;margin-bottom:13px}
     .lesson-block{padding:13px 14px;background:#f8fafc;border-radius:13px;margin:9px 0}.lesson-block b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;color:#334155}.lesson-block p{margin:0;color:#475569;line-height:1.65;font-size:14px}
+    .terms{display:grid;gap:10px;margin-top:10px}.term{border:1px solid #e5e7eb;border-radius:14px;padding:14px;background:#fff}.term-name{display:flex;align-items:center;gap:8px;font-family:Manrope;font-weight:800;color:#111827;margin-bottom:6px}.term-name span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#6d5dfc;background:#f0edff;padding:4px 7px;border-radius:999px}.term p{margin:5px 0;color:#475569;line-height:1.65;font-size:14px}.term small{display:block;margin-top:7px;color:#64748b;line-height:1.55}.misconception{margin-top:8px;padding:10px 12px;border-left:3px solid #f59e0b;background:#fffbeb;border-radius:8px;color:#78350f;font-size:13px;line-height:1.55}
     .concept-list{margin:7px 0 0;padding-left:18px;color:#475569}.concept-list li{margin:6px 0;line-height:1.55;font-size:14px}
     .practice-box{background:#effce0;border:1px solid #d9f99d;border-radius:13px;padding:13px 14px;margin-top:10px}.practice-box b{font-size:12px;text-transform:uppercase;letter-spacing:.06em}.practice-box p{margin:5px 0 0;color:#3f6212;line-height:1.6;font-size:14px}
     .reflection{font-size:13px;color:#6b7280;margin-top:10px;font-style:italic;line-height:1.55}
@@ -200,16 +201,108 @@ const books=[
 
 const studyPrograms={
 'deep-work':{
-  promise:'Dalam 7 hari, pembaca tidak hanya memahami Deep Work, tetapi memiliki sistem fokus yang bisa langsung dipakai untuk kerja, belajar, atau membangun bisnis.',
-  outcomes:['Paham beda deep vs shallow work','Punya ritual fokus pribadi','Punya sistem mengendalikan distraksi'],
+  promise:'Dalam 7 hari, pembaca mempelajari gagasan utama Deep Work secara bertahap, memahami istilah dan prinsipnya lebih dulu, lalu mengubahnya menjadi sistem fokus yang bisa dipakai untuk kerja, belajar, atau membangun bisnis.',
+  outcomes:['Memahami istilah inti buku, bukan sekadar menghafalnya','Mampu membedakan kerja bernilai tinggi dan kerja reaktif','Mampu merancang sistem fokus yang realistis dan berulang'],
   modules:[
-    {title:'Mengapa Fokus Menjadi Superpower',focus:'Memahami fondasi buku dan kenapa kemampuan fokus makin bernilai.',lesson:'Deep work adalah aktivitas profesional yang dilakukan dalam keadaan konsentrasi penuh, tanpa distraksi, yang mendorong kemampuan kognitif hingga batasnya. Hasilnya sulit ditiru dan biasanya menciptakan nilai lebih tinggi daripada pekerjaan reaktif.',concepts:['Deep work vs shallow work','Attention residue: sisa perhatian ketika berpindah tugas','Fokus sebagai keterampilan yang dapat dilatih'],example:'Menulis proposal strategi selama 90 menit tanpa chat biasanya menghasilkan kualitas berbeda dibanding mengerjakannya sambil membalas notifikasi setiap beberapa menit.',reflection:'Aktivitas apa dalam pekerjaanmu yang benar-benar membutuhkan otak terbaikmu?',practice:'Catat pekerjaan hari ini dan beri label D untuk deep atau S untuk shallow. Cari pola ke mana waktu paling banyak habis.'},
-    {title:'Audit Distraksi & Kebocoran Perhatian',focus:'Menemukan hal-hal kecil yang diam-diam menghancurkan konsentrasi.',lesson:'Masalah fokus sering bukan kurang disiplin, tetapi lingkungan yang terus mengundang perpindahan perhatian. Setiap perpindahan konteks meninggalkan sebagian perhatian pada tugas sebelumnya sehingga kapasitas berpikir untuk tugas baru menurun.',concepts:['Context switching','Notifikasi sebagai pemicu otomatis','Lingkungan lebih kuat daripada niat'],example:'Membuka WhatsApp “sebentar” saat menulis bisa mengubah 30 detik gangguan menjadi beberapa menit pemulihan fokus.',reflection:'Gangguan mana yang paling sering kamu izinkan masuk tanpa keputusan sadar?',practice:'Matikan notifikasi non-esensial selama satu hari dan catat berapa kali tanganmu tetap refleks mencari HP.'},
-    {title:'Bangun Ritual Deep Work',focus:'Mengubah fokus dari kebetulan menjadi jadwal yang bisa diulang.',lesson:'Newport menekankan pentingnya ritual: kapan mulai, di mana bekerja, berapa lama, aturan apa yang berlaku, dan dukungan apa yang disiapkan. Ritual mengurangi energi yang terbuang untuk memutuskan “mulai sekarang atau nanti?”.',concepts:['Time blocking','Ritual awal','Batas waktu yang jelas','Target output per sesi'],example:'Alih-alih “nanti saya fokus bikin landing page”, tentukan 08.00–09.30, meja tertentu, HP di luar ruangan, target menyelesaikan hero + offer.',reflection:'Kapan energi mentalmu biasanya paling tinggi?',practice:'Jadwalkan satu blok deep work 60–90 menit besok. Tulis jam, tempat, satu target, dan aturan distraksinya.'},
-    {title:'Latih Otak Menoleransi Kebosanan',focus:'Berhenti melatih otak untuk selalu membutuhkan stimulasi.',lesson:'Jika setiap antre, jeda, atau rasa bosan langsung diisi scrolling, otak terbiasa meminta rangsangan baru. Kemampuan bertahan pada satu masalah sulit ikut melemah. Fokus dilatih juga ketika kita memilih tidak mengambil distraksi.',concepts:['Stimulus craving','Productive meditation','Single-task attention'],example:'Saat berjalan 15 menit, pilih satu masalah bisnis dan terus kembali ke masalah itu setiap kali pikiran melayang, tanpa membuka ponsel.',reflection:'Seberapa cepat kamu mencari HP ketika tidak ada sesuatu yang menarik?',practice:'Lakukan 20 menit tanpa input: tidak ada musik, chat, feed, atau video. Gunakan waktu untuk memikirkan satu masalah saja.'},
-    {title:'Kurangi Shallow Work Tanpa Mengabaikan Operasional',focus:'Membuat pekerjaan dangkal punya batas agar tidak memakan seluruh hari.',lesson:'Email, chat, laporan rutin, dan administrasi tetap diperlukan. Masalahnya muncul ketika semuanya tidak dibatasi. Strateginya bukan menghapus semua shallow work, tetapi memberinya jatah waktu dan standar yang sesuai nilainya.',concepts:['Shallow work budget','Batching komunikasi','Principle of least resistance'],example:'Daripada membuka inbox sepanjang hari, proses pesan dalam dua atau tiga jendela waktu agar jam terbaik tetap tersedia untuk pekerjaan bernilai tinggi.',reflection:'Pekerjaan mana yang terasa sibuk tetapi hampir tidak mengubah hasil utama?',practice:'Buat dua daftar: HIGH VALUE dan MAINTENANCE. Pindahkan tugas maintenance ke blok waktu khusus.'},
-    {title:'Fokus pada Ukuran Hasil, Bukan Kesibukan',focus:'Mengarahkan deep work ke sasaran yang benar-benar mengubah hasil.',lesson:'Fokus saja tidak cukup. Sesi deep work harus diarahkan pada aktivitas yang menghasilkan output penting. Karena itu, sebelum mulai kita perlu mendefinisikan hasil konkret, bukan sekadar “kerja dua jam”.',concepts:['Lead measure vs lag measure','Output yang terukur','Wildly important goal'],example:'“Belajar marketing” terlalu kabur. “Menyelesaikan 3 angle iklan dan 10 hook teruji” memberi otak sasaran yang bisa dituntaskan.',reflection:'Kalau hanya satu hasil penting boleh selesai minggu ini, apa yang paling mengubah keadaan?',practice:'Pilih satu sasaran mingguan. Tentukan ukuran proses yang bisa kamu kontrol, misalnya 7 sesi fokus × 75 menit.'},
-    {title:'Jadikan Deep Work Sebagai Sistem Mingguan',focus:'Menggabungkan seluruh konsep menjadi ritme yang bertahan setelah buku selesai.',lesson:'Deep work bukan sprint motivasi. Sistem yang baik punya jadwal, batas distraksi, review, dan ritual berhenti. Shutdown ritual membantu otak percaya bahwa pekerjaan sudah ditangani sehingga waktu istirahat tidak terus diganggu urusan kerja.',concepts:['Weekly review','Shutdown ritual','Recovery sebagai bagian performa','Perbaikan sistem berulang'],example:'Setiap Jumat: hitung jam deep work, cek output, lihat gangguan terbesar, lalu ubah satu aturan untuk minggu berikutnya.',reflection:'Sistem apa yang harus tetap berjalan bahkan ketika motivasimu sedang rendah?',practice:'Susun kalender deep work minggu depan dan buat ritual penutup 10 menit: cek inbox, catat pekerjaan terbuka, rencanakan besok, lalu selesai.'}
+    {
+      title:'Fondasi Deep Work: Mengapa Fokus Menjadi Superpower',
+      focus:'Memahami tesis utama buku, definisi deep work, shallow work, dan alasan fokus menjadi kemampuan ekonomi yang bernilai.',
+      lesson:'Cal Newport memulai dari perubahan dunia kerja modern: banyak pekerjaan bernilai tinggi menuntut kita belajar hal sulit dengan cepat dan menghasilkan sesuatu pada tingkat kualitas yang tinggi. Dua tuntutan ini sama-sama membutuhkan konsentrasi tanpa gangguan. Karena itu, fokus bukan sekadar cara agar pekerjaan selesai lebih cepat. Fokus adalah mekanisme yang memungkinkan otak mempelajari sesuatu secara mendalam dan menghasilkan pekerjaan yang sulit ditiru.',
+      terms:[
+        {name:'Deep Work',kind:'Istilah inti',meaning:'Aktivitas profesional yang dilakukan dalam kondisi konsentrasi penuh tanpa distraksi dan mendorong kemampuan kognitif mendekati batasnya.',why:'Karena jenis kerja ini menghasilkan keterampilan baru, solusi kompleks, atau output bernilai tinggi yang tidak mudah dibuat ketika perhatian terpecah.',how:'Semakin lama perhatian bertahan pada satu masalah tanpa berpindah konteks, semakin banyak sumber daya mental yang tersedia untuk memahami pola, membuat hubungan antar-ide, dan memperbaiki kualitas hasil.',mistake:'Deep work bukan berarti semua pekerjaan harus dilakukan berjam-jam tanpa berhenti. Yang penting adalah kualitas konsentrasi dan nilai tugasnya.'},
+        {name:'Shallow Work',kind:'Istilah inti',meaning:'Pekerjaan logistik atau administratif yang tidak menuntut konsentrasi kognitif tinggi, seperti membalas pesan rutin, memindahkan data, mengecek notifikasi, atau sebagian rapat.',why:'Shallow work tetap dibutuhkan, tetapi jika dibiarkan mengambil seluruh hari, kita kehilangan waktu terbaik untuk menghasilkan sesuatu yang lebih bernilai.',how:'Karena tugas jenis ini mudah dimulai dan memberi rasa “sibuk”, otak cenderung memilihnya ketika tugas penting terasa sulit.',mistake:'Shallow work bukan pekerjaan yang buruk. Masalahnya adalah proporsinya dan kapan pekerjaan itu dilakukan.'},
+        {name:'The Deep Work Hypothesis',kind:'Prinsip',meaning:'Kemampuan melakukan deep work makin langka pada saat yang sama ketika nilainya makin tinggi dalam ekonomi modern.',why:'Orang yang dapat belajar cepat dan menghasilkan output berkualitas memiliki keunggulan ketika lingkungan sekitar penuh distraksi.',how:'Nilai datang dari kombinasi kelangkaan dan manfaat: jika sedikit orang bisa fokus dengan baik, kemampuan itu menjadi pembeda.',mistake:'Prinsip ini bukan klaim bahwa semua profesi sama-sama membutuhkan deep work dalam jumlah yang sama.'}
+      ],
+      concepts:['Fokus sebagai keunggulan kompetitif','Belajar cepat membutuhkan konsentrasi','Output bernilai tinggi lahir dari perhatian yang tidak terpecah'],
+      example:'Seorang marketer bisa menghabiskan dua jam membalas chat dan merasa sangat sibuk. Namun dua jam merancang positioning, membaca data iklan, dan menyusun angle baru tanpa gangguan mungkin menghasilkan dampak bisnis yang jauh lebih besar.',
+      reflection:'Dari semua pekerjaanmu, mana yang benar-benar menciptakan nilai baru dan mana yang hanya menjaga aktivitas tetap berjalan?',
+      practice:'Belum perlu mengubah jadwal. Hari ini cukup audit pekerjaanmu. Catat semua aktivitas selama beberapa jam dan tandai D untuk deep work, S untuk shallow work, serta N untuk aktivitas yang sebenarnya tidak perlu.'
+    },
+    {
+      title:'Cara Perhatian Bekerja: Attention Residue & Context Switching',
+      focus:'Memahami mengapa berpindah-pindah tugas terasa ringan tetapi diam-diam menurunkan kualitas berpikir.',
+      lesson:'Salah satu gagasan penting untuk memahami Deep Work adalah bahwa perhatian tidak berpindah secara bersih. Ketika kita meninggalkan satu tugas untuk membuka chat, email, dashboard, atau feed, sebagian pikiran masih tertinggal pada tugas sebelumnya. Akibatnya, saat kembali bekerja kita memang terlihat sudah berada di tugas utama, tetapi kapasitas mental belum sepenuhnya kembali.',
+      terms:[
+        {name:'Attention Residue',kind:'Prinsip perhatian',meaning:'Sisa perhatian yang tetap menempel pada tugas sebelumnya setelah kita berpindah ke tugas lain.',why:'Sisa perhatian membuat kapasitas kognitif untuk tugas baru berkurang, terutama jika tugas sebelumnya belum selesai atau masih menimbulkan rasa penasaran.',how:'Otak mempertahankan representasi masalah yang belum tuntas. Saat kita berpindah tugas terlalu cepat, beberapa “tab mental” tetap terbuka.',mistake:'Gangguan singkat tidak selalu berarti dampaknya juga singkat. Yang mahal sering kali adalah waktu untuk kembali ke kedalaman konsentrasi.'},
+        {name:'Context Switching',kind:'Istilah kerja',meaning:'Perpindahan bolak-balik antara dua atau lebih konteks tugas, misalnya menulis, lalu chat, lalu spreadsheet, lalu kembali menulis.',why:'Setiap perpindahan membutuhkan orientasi ulang: mengingat posisi terakhir, tujuan, aturan, dan keputusan yang sedang dipikirkan.',how:'Semakin kompleks tugas, semakin besar biaya perpindahannya karena semakin banyak konteks yang harus dimuat ulang.',mistake:'Multitasking pada dua tugas kognitif biasanya bukan mengerjakan keduanya bersamaan, melainkan switching yang sangat cepat.'},
+        {name:'Open Loop',kind:'Konsep pendukung',meaning:'Masalah, tugas, atau percakapan yang belum selesai dan masih meminta perhatian mental.',why:'Open loop memperbesar attention residue karena otak merasa masih ada sesuatu yang belum dibereskan.',how:'Mencatat next action atau waktu kapan masalah akan ditangani dapat membantu otak “melepaskan” tugas tersebut sementara.',mistake:'Menutup open loop bukan berarti semua tugas harus selesai saat itu juga. Sering kali cukup dengan memastikan ada rencana yang jelas.'}
+      ],
+      concepts:['Perhatian punya biaya perpindahan','Gangguan kecil dapat menimbulkan efek lebih panjang','Tugas terbuka perlu ditangani dengan sistem'],
+      example:'Kamu sedang menyusun strategi iklan. Notifikasi WhatsApp masuk dan kamu membalas selama satu menit. Ketika kembali, kamu harus mengingat lagi data mana yang sedang dibandingkan, hipotesis apa yang sedang diuji, dan alasan kenapa satu angle dianggap lebih kuat. Satu menit gangguan dapat menghasilkan beberapa menit pemulihan konteks.',
+      reflection:'Gangguan apa yang paling sering memutus alur berpikirmu sebelum kamu mencapai bagian yang benar-benar sulit?',
+      practice:'Selama satu sesi kerja, catat setiap perpindahan aplikasi atau tugas. Jangan mengubah perilaku dulu. Tujuannya hanya mengetahui seberapa sering konteksmu pecah.'
+    },
+    {
+      title:'Mendesain Ritual Deep Work & Time Blocking',
+      focus:'Memahami bahwa fokus yang konsisten biasanya lahir dari struktur, bukan dari menunggu mood.',
+      lesson:'Newport menekankan ritual karena kemauan adalah sumber daya yang tidak selalu stabil. Semakin banyak keputusan yang harus dibuat sebelum mulai bekerja, semakin besar kemungkinan kita menunda. Ritual mengurangi keputusan itu. Kita menentukan lebih dulu kapan fokus dimulai, di mana, berapa lama, apa targetnya, dan perilaku apa yang tidak diperbolehkan.',
+      terms:[
+        {name:'Deep Work Ritual',kind:'Prinsip',meaning:'Serangkaian aturan yang dibuat sebelum sesi fokus untuk mengurangi friksi saat mulai dan menjaga kualitas konsentrasi.',why:'Ritual mengubah fokus dari keputusan spontan menjadi prosedur yang bisa diulang.',how:'Ritual yang baik menjawab lima hal: kapan, di mana, berapa lama, target apa, dan aturan distraksinya.',mistake:'Ritual tidak perlu rumit atau estetik. Ia berguna jika membuatmu lebih cepat masuk ke kondisi kerja mendalam.'},
+        {name:'Time Blocking',kind:'Teknik',meaning:'Membagi kalender menjadi blok waktu yang masing-masing sudah memiliki fungsi atau jenis pekerjaan.',why:'Tanpa blok waktu, pekerjaan penting sering kalah oleh hal mendesak yang terus masuk.',how:'Waktu terbaik dialokasikan lebih dulu untuk pekerjaan bernilai tinggi, sedangkan komunikasi dan administrasi mendapat jendela tersendiri.',mistake:'Time blocking bukan berarti jadwal tidak boleh berubah. Blok bisa direvisi ketika realitas berubah.'},
+        {name:'Grand Gesture',kind:'Strategi',meaning:'Membuat perubahan lingkungan atau komitmen yang cukup besar sehingga membantu otak memperlakukan sebuah tugas sebagai sesuatu yang serius.',why:'Perubahan konteks dapat menambah motivasi dan mengurangi godaan kebiasaan lama.',how:'Contohnya bekerja di tempat khusus, menyewa ruang untuk satu hari, atau membuat komitmen yang memiliki biaya nyata.',mistake:'Grand gesture bukan syarat deep work. Ini hanya alat tambahan untuk proyek penting tertentu.'}
+      ],
+      concepts:['Kurangi keputusan sebelum mulai','Jadwal menciptakan ruang bagi fokus','Lingkungan dapat menjadi bagian dari sistem konsentrasi'],
+      example:'“Nanti sore bikin landing page” terlalu kabur. Ritual yang lebih kuat adalah: 08.00–09.30 di meja kerja, HP di ruangan lain, hanya Figma dan dokumen riset yang terbuka, targetnya hero + offer selesai.',
+      reflection:'Kapan energi mentalmu paling tinggi dan kondisi seperti apa yang membuatmu paling mudah tenggelam dalam pekerjaan?',
+      practice:'Rancang satu ritual deep work untuk besok: tulis jam mulai, durasi, lokasi, output yang harus selesai, aplikasi yang boleh terbuka, dan aturan jika ada pesan masuk.'
+    },
+    {
+      title:'Train Your Brain: Boredom, Focus & Productive Meditation',
+      focus:'Memahami mengapa kemampuan menahan rasa bosan berhubungan langsung dengan kemampuan berkonsentrasi.',
+      lesson:'Jika setiap momen kosong langsung diisi scrolling, video, atau notifikasi, otak terus belajar bahwa sedikit kebosanan harus segera dihilangkan. Kebiasaan ini membuat konsentrasi panjang terasa makin tidak nyaman. Newport berargumen bahwa kita perlu melatih otak untuk tidak selalu mengikuti dorongan mencari stimulus.',
+      terms:[
+        {name:'Embrace Boredom',kind:'Prinsip',meaning:'Melatih diri untuk tidak otomatis mencari stimulasi setiap kali muncul rasa bosan atau dorongan mengecek sesuatu.',why:'Kemampuan fokus membutuhkan toleransi terhadap fase ketika tugas terasa lambat, sulit, atau belum memberi hadiah cepat.',how:'Dengan membiarkan dorongan muncul tanpa langsung menuruti, kita membangun jarak antara impuls dan tindakan.',mistake:'Tujuannya bukan hidup tanpa hiburan. Tujuannya adalah mampu memilih kapan menggunakan stimulasi.'},
+        {name:'Productive Meditation',kind:'Teknik',meaning:'Menggunakan aktivitas fisik yang ringan seperti berjalan untuk memusatkan pikiran pada satu masalah profesional yang sudah ditentukan.',why:'Teknik ini melatih kemampuan membawa perhatian kembali ke satu masalah setiap kali pikiran melayang.',how:'Pilih satu pertanyaan, pecah menjadi bagian-bagian, lalu terus kembali ke struktur masalah tanpa membuka sumber informasi lain.',mistake:'Ini bukan meditasi mindfulness tradisional. Fokusnya tetap pada pemecahan masalah tertentu.'},
+        {name:'Schedule Internet Use',kind:'Strategi',meaning:'Menentukan kapan internet atau aplikasi distraktif boleh digunakan, bukan mencoba menahan godaan setiap menit.',why:'Aturan waktu mengurangi negosiasi internal dan membuat otak belajar bahwa konektivitas tidak selalu tersedia.',how:'Tentukan jendela tertentu untuk online. Di luar itu, tahan dorongan dan catat jika perlu.',mistake:'Ini bukan berarti internet buruk. Yang dilatih adalah kendali atas kapan perhatian diberikan.'}
+      ],
+      concepts:['Impuls tidak harus diikuti','Toleransi kebosanan memperpanjang rentang fokus','Konsentrasi dapat dilatih secara sengaja'],
+      example:'Saat menunggu kopi atau antre, biasanya tangan otomatis mencari HP. Dalam latihan ini kamu membiarkan beberapa menit kosong tanpa input. Sensasi gelisah yang muncul justru bagian dari latihan perhatian.',
+      reflection:'Apakah kamu memilih membuka HP, atau tanganmu sering melakukannya sebelum ada keputusan sadar?',
+      practice:'Ambil 20 menit tanpa feed, video, musik, atau chat. Pilih satu masalah kerja dan pikirkan hanya masalah itu. Setiap pikiran melayang, sadari lalu kembali ke pertanyaan utama.'
+    },
+    {
+      title:'Drain the Shallows: Membatasi Pekerjaan Dangkal',
+      focus:'Memahami cara menjaga operasional tetap berjalan tanpa membiarkannya memakan energi terbaik.',
+      lesson:'Deep Work tidak meminta kita menghapus email, chat, meeting, atau administrasi. Intinya adalah menyadari bahwa pekerjaan dangkal sangat mudah berkembang memenuhi seluruh waktu yang tersedia. Karena itu, shallow work perlu diberi batas, standar, dan jendela pengerjaan yang sesuai dengan nilainya.',
+      terms:[
+        {name:'Drain the Shallows',kind:'Prinsip',meaning:'Mengurangi porsi pekerjaan dangkal agar tersedia lebih banyak kapasitas untuk pekerjaan yang membutuhkan kedalaman.',why:'Shallow work cenderung terasa mendesak dan terlihat jelas, sementara hasil deep work sering baru terasa kemudian.',how:'Audit waktu, beri batas jam untuk administrasi, dan tanyakan apakah sebuah aktivitas benar-benar membutuhkan keahlianmu.',mistake:'Tujuannya bukan nol shallow work. Organisasi tetap membutuhkan koordinasi dan administrasi.'},
+        {name:'Shallow Work Budget',kind:'Teknik',meaning:'Batas proporsi waktu yang boleh dipakai untuk aktivitas bernilai rendah atau mudah direplikasi.',why:'Tanpa batas eksplisit, tugas reaktif akan terus berekspansi.',how:'Tentukan rentang realistis, misalnya bagian tertentu dari hari, lalu letakkan tugas dangkal di dalam rentang itu.',mistake:'Angkanya tidak universal. Pekerjaan customer service tentu membutuhkan porsi komunikasi lebih besar daripada penulis.'},
+        {name:'Fixed-Schedule Productivity',kind:'Prinsip',meaning:'Menetapkan batas kapan hari kerja berakhir lalu memaksa prioritas dan sistem menyesuaikan dengan batas tersebut.',why:'Waktu yang dianggap tidak terbatas mendorong kita menerima terlalu banyak tugas dan bekerja tanpa prioritas.',how:'Dengan deadline harian yang jelas, kita lebih agresif menghapus, mendelegasikan, atau menyederhanakan aktivitas rendah nilai.',mistake:'Ini bukan alasan mengabaikan keadaan darurat. Prinsipnya adalah membuat keterbatasan menjadi alat prioritas.'}
+      ],
+      concepts:['Kesibukan bukan ukuran nilai','Administrasi perlu batas','Keterbatasan waktu dapat memaksa prioritas'],
+      example:'Daripada membuka inbox sepanjang hari, kamu memproses pesan pukul 11.30 dan 16.00. Pekerjaan komunikasi tetap selesai, tetapi tidak memperoleh hak untuk memotong setiap sesi berpikir.',
+      reflection:'Aktivitas apa yang membuatmu terlihat aktif tetapi hampir tidak mengubah hasil utama?',
+      practice:'Buat dua kolom: HIGH VALUE dan MAINTENANCE. Masukkan tugasmu ke salah satunya, lalu tentukan jendela waktu khusus untuk seluruh tugas maintenance.'
+    },
+    {
+      title:'Execution: Lead Measures, Scoreboard & Wildly Important Goals',
+      focus:'Memahami bagaimana prinsip eksekusi dipakai agar deep work tidak berhenti sebagai niat.',
+      lesson:'Newport mengadaptasi beberapa ide eksekusi untuk membuat deep work terukur. Kita perlu membedakan hasil akhir yang ingin dicapai dari perilaku yang dapat kita kontrol hari ini. Kemudian kemajuan perlu terlihat agar sistem memberi umpan balik, bukan hanya perasaan “sepertinya minggu ini produktif”.',
+      terms:[
+        {name:'Wildly Important Goal',kind:'Prinsip eksekusi',meaning:'Satu atau sedikit sasaran yang dianggap jauh lebih penting dibanding banyak tujuan lain yang bersaing.',why:'Perhatian tersebar ketika semua hal dianggap prioritas.',how:'Pilih sasaran yang jika maju akan memberi efek paling besar, lalu arahkan deep work ke sana.',mistake:'WIG bukan daftar semua target. Justru kekuatannya berasal dari penyempitan fokus.'},
+        {name:'Lead Measure',kind:'Metrik',meaning:'Ukuran perilaku yang dapat kita kendalikan dan yang diperkirakan mendorong hasil akhir.',why:'Hasil akhir sering terlambat dan dipengaruhi banyak faktor. Lead measure memberi sesuatu yang bisa diperbaiki hari ini.',how:'Contoh: jumlah jam deep work berkualitas per minggu, bukan hanya omzet akhir.',mistake:'Lead measure bukan metrik aktivitas sembarang. Ia harus berhubungan masuk akal dengan hasil yang ingin dicapai.'},
+        {name:'Lag Measure',kind:'Metrik',meaning:'Ukuran hasil akhir yang muncul setelah serangkaian tindakan dilakukan.',why:'Lag measure penting untuk mengetahui apakah strategi benar-benar menghasilkan dampak.',how:'Contohnya revenue, artikel terbit, fitur selesai, atau nilai ujian.',mistake:'Karena muncul terlambat, lag measure tidak cukup untuk mengelola perilaku harian.'},
+        {name:'Compelling Scoreboard',kind:'Prinsip eksekusi',meaning:'Papan kemajuan sederhana yang membuat hubungan antara usaha dan hasil mudah terlihat.',why:'Visibilitas menciptakan umpan balik dan menjaga perhatian pada sasaran.',how:'Catat jam deep work atau jumlah sesi berkualitas secara konsisten dan bandingkan dengan output.',mistake:'Scoreboard tidak perlu canggih. Jika terlalu rumit, ia justru menjadi shallow work baru.'}
+      ],
+      concepts:['Bedakan input yang bisa dikontrol dari hasil akhir','Satu sasaran utama memperjelas penggunaan fokus','Kemajuan perlu terlihat'],
+      example:'Target “menaikkan penjualan” adalah lag measure. Lead measure yang lebih bisa dikendalikan misalnya lima sesi deep work per minggu untuk riset produk, menyusun angle, dan membaca data iklan.',
+      reflection:'Jika hanya satu hasil penting boleh maju minggu ini, apa yang paling layak menerima jam fokus terbaikmu?',
+      practice:'Pilih satu WIG. Tentukan satu lead measure dan satu lag measure. Buat scoreboard sederhana yang bisa diperbarui kurang dari satu menit.'
+    },
+    {
+      title:'Membuat Deep Work Bertahan: Shutdown Ritual, Recovery & Review',
+      focus:'Menggabungkan seluruh prinsip menjadi sistem mingguan yang bisa bertahan setelah program selesai.',
+      lesson:'Deep work bukan tantangan tujuh hari. Sistem fokus harus memiliki awal, akhir, dan mekanisme evaluasi. Salah satu ide penting Newport adalah bahwa istirahat bukan musuh produktivitas. Otak membutuhkan periode lepas dari pekerjaan berat untuk memulihkan perhatian. Karena itu, ritual menutup hari dan review mingguan menjadi bagian dari sistem, bukan bonus.',
+      terms:[
+        {name:'Shutdown Ritual',kind:'Ritual',meaning:'Prosedur penutup hari kerja untuk memastikan tugas terbuka sudah dicatat, agenda berikutnya jelas, dan otak mendapat sinyal bahwa pekerjaan selesai.',why:'Tanpa penutupan, pikiran terus mengulang pekerjaan yang belum jelas statusnya.',how:'Review inbox dan tugas, catat next action, lihat kalender berikutnya, lalu gunakan kalimat atau tindakan penutup yang konsisten.',mistake:'Shutdown ritual bukan berarti semua pekerjaan harus selesai. Yang penting adalah setiap hal terbuka sudah memiliki tempat atau rencana.'},
+        {name:'Downtime',kind:'Prinsip pemulihan',meaning:'Periode ketika kita benar-benar berhenti dari pekerjaan kognitif utama.',why:'Pemulihan membantu mengisi kembali kemampuan mengarahkan perhatian dan memberi ruang bagi pemrosesan bawah sadar.',how:'Buat batas akhir kerja yang relatif konsisten dan hindari membawa pekerjaan mental ke seluruh waktu istirahat.',mistake:'Downtime bukan kemalasan. Ia menjadi produktif ketika mengikuti periode kerja yang memang serius.'},
+        {name:'Weekly Review',kind:'Sistem',meaning:'Evaluasi rutin terhadap jadwal, jam deep work, output, gangguan, dan perubahan yang perlu dilakukan.',why:'Tanpa review, kita mudah mengulang sistem yang terlihat baik tetapi sebenarnya tidak bekerja.',how:'Bandingkan rencana dengan kenyataan, cari hambatan terbesar, lalu ubah satu atau dua aturan untuk minggu berikutnya.',mistake:'Review bukan sesi menyalahkan diri. Fungsinya adalah memperbaiki desain sistem.'}
+      ],
+      concepts:['Istirahat adalah bagian dari performa','Open loop perlu ditutup secara sistematis','Sistem fokus harus dievaluasi dan diperbaiki'],
+      example:'Setiap Jumat sore kamu melihat jumlah sesi deep work, hasil yang selesai, gangguan utama, dan jam mana yang paling efektif. Dari situ kamu memindahkan sesi minggu depan ke waktu yang terbukti lebih kuat.',
+      reflection:'Aturan apa yang harus tetap berjalan bahkan ketika motivasimu sedang rendah?',
+      practice:'Susun kalender deep work minggu depan. Tambahkan shutdown ritual 10 menit setiap hari dan weekly review 20 menit di akhir minggu.'
+    }
   ]
 }
 };
@@ -242,20 +335,31 @@ function buildStudySchedule(program,days){
   const mods=program.modules;
   if(days===14){
     const out=[];
-    mods.forEach((m,i)=>{
-      out.push({title:m.title,focus:m.focus,minutes:18,type:'learn',lesson:m.lesson,concepts:m.concepts,example:m.example,reflection:m.reflection,practice:'Hari ini cukup pahami konsep. Besok kamu akan mempraktikkannya.'});
-      out.push({title:'Praktik: '+m.title,focus:'Mengubah konsep kemarin menjadi perilaku nyata.',minutes:20,type:'practice',lesson:'Hari praktik. Baca ulang catatan kemarin selama 3 menit, lalu habiskan sebagian besar sesi untuk menguji konsep pada pekerjaan atau rutinitas nyata.',concepts:['Review singkat','Eksperimen nyata','Catat hasil dan hambatan'],example:m.example,reflection:m.reflection,practice:m.practice});
+    mods.forEach((m)=>{
+      out.push({...m,minutes:30,practice:'Hari ini fokus memahami materi. Baca istilah dan prinsip sampai kamu bisa menjelaskannya kembali dengan bahasamu sendiri.'});
+      out.push({
+        title:'Praktik & Integrasi: '+m.title,
+        focus:'Mengubah pemahaman kemarin menjadi perilaku nyata.',
+        minutes:25,
+        lesson:'Hari ini bukan menambah teori baru. Baca ulang istilah inti selama beberapa menit, lalu gunakan sisa waktu untuk menguji konsep pada pekerjaan atau rutinitas nyata.',
+        terms:m.terms,
+        concepts:['Recall tanpa melihat catatan','Eksperimen nyata','Catat hasil, hambatan, dan perubahan'],
+        example:m.example,
+        reflection:m.reflection,
+        practice:m.practice
+      });
     });
     return out;
   }
-  if(days===7) return mods.map(m=>({...m,minutes:25}));
+  if(days===7) return mods.map(m=>({...m,minutes:35}));
   const groups=Array.from({length:days},()=>[]);
   mods.forEach((m,i)=>groups[Math.floor(i*days/mods.length)].push(m));
-  return groups.map((g,i)=>({
+  return groups.map(g=>({
     title:g.map(x=>x.title).join(' + '),
     focus:g.map(x=>x.focus).join(' '),
-    minutes:days===3?45:35,
+    minutes:days===3?70:50,
     lesson:g.map(x=>x.lesson).join(' '),
+    terms:g.flatMap(x=>x.terms||[]),
     concepts:g.flatMap(x=>x.concepts),
     example:g.map(x=>x.example).join(' '),
     reflection:g[g.length-1].reflection,
@@ -276,7 +380,7 @@ function renderStudyProgram(b,days=7){
       <div class="mastery">
         <div><b>${schedule.length}</b><span>sesi belajar terarah</span></div>
         <div><b>±${schedule.reduce((a,x)=>a+x.minutes,0)}m</b><span>total waktu belajar aktif</span></div>
-        <div><b>3 lapis</b><span>paham → refleksi → praktik</span></div>
+        <div><b>4 lapis</b><span>konsep → istilah → contoh → praktik</span></div>
       </div>
       <div class="study-progress"><i style="width:0%"></i></div>
       <div class="study-days">
@@ -284,11 +388,20 @@ function renderStudyProgram(b,days=7){
           <section class="day-card">
             <div class="day-top"><div><div class="day-no">Hari ${i+1} dari ${schedule.length}</div><h5>${d.title}</h5></div><span class="day-time">◷ ${d.minutes} menit</span></div>
             <div class="day-focus">${d.focus}</div>
-            <div class="lesson-block"><b>Pelajaran hari ini</b><p>${d.lesson}</p></div>
-            <div class="lesson-block"><b>Konsep yang harus nempel</b><ul class="concept-list">${d.concepts.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-            <div class="lesson-block"><b>Contoh nyata</b><p>${d.example}</p></div>
-            <div class="practice-box"><b>✓ Praktik hari ini</b><p>${d.practice}</p></div>
-            <div class="reflection">Renungkan: ${d.reflection}</div>
+            <div class="lesson-block"><b>01 · Pahami gagasan besarnya</b><p>${d.lesson}</p></div>
+            <div class="lesson-block"><b>02 · Pahami istilah & prinsip</b>
+              <div class="terms">${(d.terms||[]).map(t=>`<div class="term">
+                <div class="term-name">${t.name}<span>${t.kind}</span></div>
+                <p><strong>Artinya:</strong> ${t.meaning}</p>
+                <p><strong>Kenapa penting:</strong> ${t.why}</p>
+                <p><strong>Cara kerjanya:</strong> ${t.how}</p>
+                <div class="misconception"><strong>Jangan salah paham:</strong> ${t.mistake}</div>
+              </div>`).join('')}</div>
+            </div>
+            <div class="lesson-block"><b>03 · Hubungkan konsep</b><ul class="concept-list">${d.concepts.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+            <div class="lesson-block"><b>04 · Lihat contoh nyata</b><p>${d.example}</p></div>
+            <div class="practice-box"><b>05 · Baru praktik</b><p>${d.practice}</p></div>
+            <div class="reflection">Sebelum lanjut besok, jawab ini: ${d.reflection}</div>
           </section>`).join('')}
       </div>
     </div>`;
